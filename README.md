@@ -160,3 +160,7 @@ starts an event loop.
 ##### cwd()
 
 returns os.getcwd()
+
+## Acknowledgement
+
+Many thanks to [Hans Lub](http://utopia.knoware.nl/~hlub/rlwrap/) for creating [the great tool](https://github.com/hanslub42/rlwrap).
