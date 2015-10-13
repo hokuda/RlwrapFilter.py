@@ -1,8 +1,8 @@
-# Python library for [rlwrap](https://github.com/hanslub42/rlwrap) filters
+Python library for [rlwrap](https://github.com/hanslub42/rlwrap) filters
+==========================================================================
 
-
-## Synopsis
-
+Synopsis
+-------------------
 ```
     import os
     import sys
@@ -18,16 +18,16 @@
 ```
 
 
-## Description
-
+Description
+-------------------
 This is an [RlwrapFilter](http://utopia.knoware.nl/~hlub/uck/rlwrap/RlwrapFilter.html)
 clone written in Python. The focus is on providing the same API's
 and usage of the original Perl version [RlwrapFilter](http://utopia.knoware.nl/~hlub/uck/rlwrap/RlwrapFilter.html)
 as possible.
 
 
-## Module contents
-
+Module contents
+-------------------
 The module defines a class, several functions, variables, constants, and an exception.
 
 ### class
@@ -43,11 +43,12 @@ f = rlwrapfilter.RlwrapFilter(prompt_handler = lambda x: "Hi! > ", minimal_rlwra
 returns a new RlwrapFilter object.
 
 ### exception
+
 rlwrapfilter.**RlwrapFilterError**
 
 
-## RlwrapFilter object
-
+RlwrapFilter object
+-------------------
 
 
 ### handlers
@@ -161,6 +162,16 @@ starts an event loop.
 
 returns os.getcwd()
 
-## Acknowledgement
 
+Install
+-------------------
+```
+$ git clone https://github.com/hokuda/rlwrapfilter.py.git
+$ cd rlwrapfilter.py
+$ sudo python3 ./setup.py install
+```
+
+
+Acknowledgement
+-------------------
 Many thanks to [Hans Lub](http://utopia.knoware.nl/~hlub/rlwrap/) for creating [the great tool](https://github.com/hanslub42/rlwrap).
