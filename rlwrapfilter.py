@@ -447,12 +447,12 @@ class RlwrapFilter:
         """
         write_patiently(CMD_IN, bytearray(question + "\n", 'ascii'))
         if (self.cloak_and_dagger_verbose):
-            send_output_oob("cloak_and_dagger question: {0}\n".format(question))
+            self.send_output_oob("cloak_and_dagger question: {0}\n".format(question))
         response = read_until(CMD_OUT, prompt, timeout)
         response = re.sub('^.*?\n', '', response) # chop off echoed question;
         response = re.sub('{0}$'.format(prompt), '', response) # chop off prompt;
         if (self.cloak_and_dagger_verbose):
-            send_output_oob("cloak_and_dagger response: {0}\n".format(response))
+            self.send_output_oob("cloak_and_dagger response: {0}\n".format(response))
         return response
 
 
