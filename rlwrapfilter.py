@@ -115,7 +115,7 @@ def read_until(fh, stoptext, timeout):
             write_message(TAG_ERROR, "read_until: timeout");
             return res
         res = res + chunk
-        if re.search(re.escape(stoptext), res):
+        if re.search(stoptext, res):
             return res
 
 
@@ -454,6 +454,21 @@ class RlwrapFilter:
         if (self.cloak_and_dagger_verbose):
             self.send_output_oob("cloak_and_dagger response: {0}\n".format(response))
         return response
+
+
+    def vacuum_stale_message(self, prompt, timeout):
+        """
+        Some command returns messages asynchronously
+        and tends to delay message when invoking multiple `cloak_and_dagger`.
+        You may want to drop message at such time.
+
+        rlwrap_filter.cloak_and_dagger(command1, prompt, timeout)
+        rlwrap_filter.cloak_and_dagger(command2, prompt, timeout)
+        ...
+        time.sleep(1)
+        rlwrap_filter.vacuum_stale_message(prompt, timeout)
+        """
+        response = read_until(CMD_OUT, prompt, timeout)
 
 
     def name2tag(self, name):
