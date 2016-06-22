@@ -112,10 +112,11 @@ def read_until(fh, stoptext, timeout):
         chunk = read_chunk(fh, timeout);
         if(not chunk):
             # got "" back: timeout
-            write_message(TAG_ERROR, "read_until: timeout");
+            #send_warn("read_until: timeout")
             return res
         res = res + chunk
-        if re.search(stoptext, res):
+        # multi-line mode so that "^" matches a head of each line
+        if re.search(stoptext, res, re.MULTILINE):
             return res
 
 
@@ -124,7 +125,7 @@ def read_chunk(fh, timeout):
     read chunk from pty pointed to by fh with timeout if timed out, returns 0-length string
     """
     if (len(select.select([fh], [], [], timeout)[0]) > 0):
-        chunk = os.read(fh, 256);
+        chunk = os.read(fh, 2**16); # read up-to 2^16=65536 bytes
         return chunk.decode('utf-8')
     return ""
 
@@ -469,6 +470,7 @@ class RlwrapFilter:
         rlwrap_filter.vacuum_stale_message(prompt, timeout)
         """
         response = read_until(CMD_OUT, prompt, timeout)
+        return response
 
 
     def name2tag(self, name):
