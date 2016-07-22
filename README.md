@@ -1,3 +1,5 @@
+Not maintained here any longer. This has been merged into [the mainstream](https://github.com/hanslub42/rlwrap).
+
 Python library for [rlwrap](https://github.com/hanslub42/rlwrap) filters
 ==========================================================================
 
